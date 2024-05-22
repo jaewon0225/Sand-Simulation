@@ -6,11 +6,12 @@ public:
     void PlaceSand(int x, int y);
     void UpdateSandBox();
     void DFSCheck();
+    void SetColor(char color);
     const std::vector<std::vector<char>>& GetBox() const; // Getter method
 
 private:
     std::vector<std::vector<char>> box;
-    const char sand_char = 'o';
+    char color = 'o';
 };
 
 int randomDirection();

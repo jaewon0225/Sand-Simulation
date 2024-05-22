@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+
 #include "sand_solver.cpp"
 
 const int window_width = 400;
@@ -16,6 +18,19 @@ int main() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
+            
+            if (event.type == sf::Event::KeyPressed) {
+                // Check if the 'B' key is pressed
+                if (event.key.code == sf::Keyboard::B) {
+                    sandbox.SetColor('b');
+                }
+                if (event.key.code == sf::Keyboard::O) {
+                    sandbox.SetColor('o');
+                }
+                if (event.key.code == sf::Keyboard::R) {
+                    sandbox.SetColor('r');
+                }
+            }
         }
 
         // Place sand while the left mouse button is pressed
@@ -37,9 +52,20 @@ int main() {
                 sf::RectangleShape cell(sf::Vector2f(cellSize, cellSize));
                 cell.setPosition(j * cellSize, i * cellSize);
 
-                if (box[i][j] == 'o') {
+                if (box[i][j] == 'o') 
+                {
                     cell.setFillColor(sf::Color::Black);
-                } else {
+                }
+                else if (box[i][j] == 'b')
+                {
+                    cell.setFillColor(sf::Color::Blue);
+                }
+                else if (box[i][j] == 'r')
+                {
+                    cell.setFillColor(sf::Color::Red);
+                }
+                else 
+                {
                     cell.setFillColor(sf::Color::White);
                 }
 
